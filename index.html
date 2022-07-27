@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Form Validation</title>
+</head>
+<body>
+    <div class="main">
+
+        <form action="" method="POST" class="form" id="form-1">
+          <h3 class="heading">Đăng ký</h3>
+          <div class="spacer"></div>
+      
+          <div class="form-group">
+                <label for="fullname" class="form-label">Tên đầy đủ</label>
+                <input id="fullname" name="fullname" rules="required" type="text" placeholder="VD: Võ Thành Tiến" class="form-control">
+                <span class="form-message"></span>
+          </div>
+      
+          <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input id="email" name="email" rules="required|email" type="text" placeholder="VD: email@domain.com" class="form-control">
+                <span class="form-message"></span>
+          </div>
+      
+          <div class="form-group">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <input id="password" name="password" rules="required|min:4" type="password" placeholder="Nhập mật khẩu" class="form-control">
+                <span class="form-message"></span>
+          </div>
+      
+          <!-- <div class="form-group">
+            <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
+            <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
+            <span class="form-message"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="avata" class="form-label">Nhập lại mật khẩu</label>
+            <input id="avata" name="avata"  type="file" class="form-control">
+            <span class="form-message"></span>
+          </div> -->
+          
+          <!-- <div class="form-group horizontal">
+            <label for="password_confirmation" class="form-label"> Giới tính</label>
+            <div class="horizontal gender">
+              <input  name="gender"  type="radio" value="male" class="form-control">
+              <span class="choose__gender">Nam</span>
+            </div>
+            <div class="horizontal gender">
+              <input  name="gender"  type="radio" value="female" class="form-control">
+              <span class="choose__gender">Nữ</span>
+            </div>
+            <div class="horizontal gender">
+              <input  name="gender"  type="radio" value="other" class="form-control">
+              <span class="choose__gender">Khác</span>
+            </div>
+            <span class="form-message"></span>
+          </div> -->
+
+          <button class="form-submit">Đăng ký</button>
+        </form>
+      
+      </div>
+      <!-- <script src="./app.js"></script> -->
+      <!-- Tạo validator 1 -->
+      <!-- <script>
+        Validator({
+          form:'#form-1',
+          errorSelector : '.form-message',
+          formGroupSelector: '.form-group',
+          rules: [
+            Validator.isRequired('#fullname','Vui lòng nhập tên đầy đủ'),
+            Validator.isRequired('#email'),
+            Validator.isEmail('#email'),
+            Validator.isRequired('#password'),
+            Validator.isPassword('#password', 8),
+            Validator.isRequired('#password_confirmation'),
+            Validator.isConfirmation("#password_confirmation", function(){
+              return document.querySelector('#form-1 #password').value;
+            },'Mật khẩu nhập lại không chính xác'),
+            Validator.isRequired('#avata'),
+            Validator.isRequired('input[name="gender"]') 
+          ],
+          onSubmit :  function(data){
+            console.log(data);
+          }
+        })
+      </script> -->
+      <script src="./validator.js"></script>
+      <script>
+      Validator('#form-1',{
+        onSubmit: function (){
+          console.log('Call API...')
+        }
+      });
+      </script>
+</body>
+</html>
